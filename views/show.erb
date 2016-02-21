@@ -1,0 +1,31 @@
+<form name="form_create" id="form_edit" method="post" action="/contact/save">
+    <legend>View / Edit Contact</legend>
+    <div class="form-group">
+        <label for="contact_name">Name</label>
+        <% @file.xpath('//name').each do |c| %>
+            <input type="text" class="form-control" name="contact_name" id="contact_name" placeholder="Name" value="<%=c.text%>" required>
+        <% end %>
+    </div>
+    <div class="form-group">
+        <label for="contact_email">Email address</label>
+        <% @file.xpath('//email').each do |c| %>
+            <input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="Email" value="<%=c.text%>" required>
+        <% end %>
+    </div>
+    <div class="form-group">
+        <label for="contact_birthdate">Birthdate</label>
+        <% @file.xpath('//birthdate').each do |c| %>
+            <input type="date" class="form-control" name="contact_birthdate" id="contact_birthdate" placeholder="Birthdate" min="1940-01-01" max="2001-01-01" value="<%=c.text%>" required>
+        <% end %>
+    </div>
+    <div class="form-group">
+        <label for="contact_phone_number">Phone Number</label>
+        <% @file.xpath('//phone_number').each do |c| %>
+            <input type="text" class="form-control" name="contact_phone_number" id="contact_phone_number" placeholder="Phone Number" value="<%=c.text%>" required>
+        <% end %>
+    </div>
+    <input type="hidden" id="letter_contact" name="letter_contact" value="<%=@letter_contact%>">
+    <input type="hidden" id="xml_file" name="xml_file" value="<%=@xml_file%>">
+    <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Save Changes</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
