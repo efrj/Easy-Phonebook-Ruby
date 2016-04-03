@@ -1,4 +1,5 @@
-# The Easy Phonebook
+# Easy Phonebook
+
 Simple address book developed in Ruby with micro framework Sinatra.
 
 This small sample application does not use any database.
