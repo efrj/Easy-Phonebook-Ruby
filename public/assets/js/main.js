@@ -19,7 +19,9 @@ $(document).ready(function(){
                     console.log(data);
                 }
             });
-        } else {
+        }
+
+        if (action == 'delete') {
             response = confirm('Do you really want to delete this contact?');
             if (response == false) {
                 return false;
