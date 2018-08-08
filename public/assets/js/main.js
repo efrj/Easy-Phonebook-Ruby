@@ -1,7 +1,6 @@
 //Javascript
 
 $(document).ready(function(){
-
     $('.contact_action').click(function(){
         var action = $(this).data('action');
         var file = $(this).data('file');
