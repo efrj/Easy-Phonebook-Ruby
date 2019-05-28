@@ -1,4 +1,4 @@
-# Easy Phonebook
+# Easy Phonebook Ruby
 
 Simple address book developed in Ruby with micro framework Sinatra.
 
