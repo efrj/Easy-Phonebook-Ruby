@@ -16,7 +16,7 @@ class Contact
   end
 
   def find_all letter
-    @files = Dir.glob('xml/letters/' << letter <<'/*.xml')
+    @files = Dir.glob('contacts/letters/' << letter <<'/*.xml')
     return @files
   end
 
@@ -38,9 +38,9 @@ class Contact
 
     xml_string = builder.to_xml
     letter_contact = name[0,1].downcase!
-    Dir.mkdir('xml/letters/' << letter_contact) unless File.exists?('xml/letters/' << letter_contact)
+    Dir.mkdir('contacts/letters/' << letter_contact) unless File.exists?('contacts/letters/' << letter_contact)
     file_name = name.gsub(' ', '_').downcase!
-    File.open('xml/letters/' << letter_contact << '/' << file_name << '.xml', 'w+') do |file|
+    File.open('contacts/letters/' << letter_contact << '/' << file_name << '.xml', 'w+') do |file|
       file.write xml_string
     end
     return letter_contact
@@ -48,13 +48,13 @@ class Contact
 
   def find letter, file
     require 'nokogiri'
-    @file = Nokogiri::XML(File.open('xml/letters/' << letter << '/' << file << '.xml'))
+    @file = Nokogiri::XML(File.open('contacts/letters/' << letter << '/' << file << '.xml'))
     return @file
   end
 
   def drop_file letter, file
-    if File.exist?('xml/letters/' << letter << '/' << file << '.xml')
-      File.delete('xml/letters/' << letter << '/' << file << '.xml')
+    if File.exist?('contacts/letters/' << letter << '/' << file << '.xml')
+      File.delete('contacts/letters/' << letter << '/' << file << '.xml')
     end
   end
 end
