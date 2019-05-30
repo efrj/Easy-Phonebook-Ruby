@@ -1,7 +1,7 @@
 <h1 class="page-header">Contacts <small>with the letter <strong><%=@letter.upcase%></strong></small> | <a href="/" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create new contact</a></h1>
 
 <% @files.each do |f| %>
-  <p><strong><%=contactName f%></strong> - <a href="#" data-action="edit" data-letter="<%=fileLetter f%>" data-file="<%=fileName f%>" class="contact_action btn btn-success btn-xs"><i class="fa fa-eye"></i> View / <i class="fa fa-edit"></i> Edit</a> | <a href="/contact/delete/<%=fileLetter f%>/<%=fileName f%>" data-action="delete" data-file="<%=fileName f%>" data-letter="<%=fileLetter f%>" class="contact_action btn btn-success btn-xs"><i class="fa fa-times-circle"></i> Delete</a></p>
+  <p><strong><%=contact_name f%></strong> - <a href="#" data-action="edit" data-letter="<%=file_letter f%>" data-file="<%=file_name f%>" class="contact_action btn btn-success btn-xs"><i class="fa fa-eye"></i> View / <i class="fa fa-edit"></i> Edit</a> | <a href="/contact/delete/<%=file_letter f%>/<%=file_name f%>" data-action="delete" data-file="<%=file_name f%>" data-letter="<%=file_letter f%>" class="contact_action btn btn-success btn-xs"><i class="fa fa-times-circle"></i> Delete</a></p>
   <hr>
 <% end %>
 
