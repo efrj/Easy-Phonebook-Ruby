@@ -12,7 +12,7 @@ end
 post '/contact/save' do
   contact = Contact.new
   if params[:letter_contact] and params[:xml_file]
-    contact.dropFile params[:letter_contact], params[:xml_file]
+    contact.drop_file params[:letter_contact], params[:xml_file]
   end
 
   new_contact = contact.save(params[:contact_name],
@@ -26,7 +26,7 @@ end
 
 get '/letter/:letter' do
   contacts = Contact.new
-  @files = contacts.findAll params[:letter]
+  @files = contacts.find_all params[:letter]
   @letter = params[:letter]
   erb :list
 end
@@ -43,7 +43,7 @@ end
 
 get '/contact/delete/:letter/:file' do
   contact = Contact.new
-  contact.dropFile params[:letter], params[:file]
+  contact.drop_file params[:letter], params[:file]
   flash[:notice] = 'The contact was deleted successfully.'
   redirect '/letter/' << params[:letter]
 end
