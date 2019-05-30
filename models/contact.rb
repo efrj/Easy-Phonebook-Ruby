@@ -15,7 +15,7 @@ class Contact
     @phone_number
   end
 
-  def findAll letter
+  def find_all letter
     @files = Dir.glob('xml/letters/' << letter <<'/*.xml')
     return @files
   end
@@ -35,6 +35,7 @@ class Contact
         xml.phone_number @phone_number
       }
     end
+
     xml_string = builder.to_xml
     letter_contact = name[0,1].downcase!
     Dir.mkdir('xml/letters/' << letter_contact) unless File.exists?('xml/letters/' << letter_contact)
@@ -51,7 +52,7 @@ class Contact
     return @file
   end
 
-  def dropFile letter, file
+  def drop_file letter, file
     if File.exist?('xml/letters/' << letter << '/' << file << '.xml')
       File.delete('xml/letters/' << letter << '/' << file << '.xml')
     end
