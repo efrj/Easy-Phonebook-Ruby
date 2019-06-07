@@ -4,7 +4,7 @@ names = ["Ronald", "Peter", "Adam", "Shaquile", "Keanu", "Rocky", "Oliver", "Jak
 surnames = ["Nelson", "Parker", "Silverstone", "Jameson", "Jackson", "Dickson", "Smith", "Murphy", "Smith", "Li", "Smith", "O'Kelly", "Johnson", "Jones", "Wilson", "O'Sullivan", "Williams", "Lam", "Brown", "Walsh", "Martin", "Brown", "Taylor", "Gelbero", "Davies", "O'Brien", "Miller", "Roy", "Byrne", "Davis", "Tremblay", "Morton", "Singh", "Evans", "O'Ryan", "Garcia", "Lee", "White", "Wang", "Thomas", "O'Connor", "Rodriguez", "Gagnon", "Roberts", "O'Neill", "Anderson", "Lancaster", "Halen", "Richards", "Denvers"]
 
 i = 0
-total = 1000000
+total = 50
 
 until i > total  do
   i +=1;
@@ -12,7 +12,7 @@ until i > total  do
   surname = surnames.shuffle[0] + ' ' + surnames.shuffle[1]
   full_name = name + ' ' + surname
   email = full_name.downcase.gsub(' ', '_').gsub('\'', '') + '@example.com'
-  birthdate = (Time.now - rand(15552000)).strftime('%Y/%m/%d')
+  birthdate = rand(1940..2018).to_s + '/' + rand(01..12).to_s + '/' + rand(01..28).to_s
   phone_number_random = Random.new
   phone = '9' << phone_number_random.rand(0..9).to_s << phone_number_random.rand(0..9).to_s << phone_number_random.rand(0..9).to_s << '-' << phone_number_random.rand(0..9).to_s << phone_number_random.rand(0..9).to_s << phone_number_random.rand(0..9).to_s << phone_number_random.rand(0..9).to_s
 
