@@ -38,7 +38,7 @@ class Contact
 
     xml_string = builder.to_xml
     letter_contact = name[0,1].downcase!
-    Dir.mkdir('contacts/letters/' << letter_contact) unless File.exists?('contacts/letters/' << letter_contact)
+    Dir.mkdir('contacts/letters/' << letter_contact) unless File.exist?('contacts/letters/' << letter_contact)
     file_name = name.gsub(' ', '_').gsub('\'', '').downcase!
     File.open('contacts/letters/' << letter_contact << '/' << file_name << '.xml', 'w+') do |file|
       file.write xml_string
