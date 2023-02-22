@@ -9,6 +9,10 @@ get '/' do
   erb :index
 end
 
+get '/contact/new' do
+  erb :new
+end
+
 post '/contact/save' do
   contact = Contact.new
   if params[:letter_contact] and params[:xml_file]

@@ -20,7 +20,6 @@
   </head>
 
   <body>
-
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
@@ -32,7 +31,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select a letter from A to H
+                A to H
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="/letter/a" class="dropdown-item">Contacts with the letter A</a>
@@ -48,7 +47,7 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select a letter from I to Q
+                I to Q
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="/letter/i" class="dropdown-item">Contacts with the letter I</a>
@@ -64,7 +63,7 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Select a letter from R to Z
+                R to Z
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a href="/letter/r" class="dropdown-item">Contacts with the letter R</a>
@@ -78,6 +77,10 @@
                 <a href="/letter/z" class="dropdown-item">Contacts with the letter Z</a>
               </div>
             </li>
+
+            <li class="nav-item">
+              <a href="/contact/new" class="btn btn-warning"><i class="fa fa-plus-circle"></i> Create new contact</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -85,18 +88,18 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-        <% if flash[:notice] %>
-            <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <%= flash[:notice] %>
-            </div>
-        <% end %>
-        <%= yield %>
+      <% if flash[:notice] %>
+        <div class="alert alert-info alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <%= yield %>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <span class="text-muted"><p>The Easy Phonebook <%=Time.now.year%></p></span>
-        </div>
+      <div class="container">
+        <span class="text-muted"><p>The Easy Phonebook <%=Time.now.year%></p></span>
+      </div>
     </footer>
 
     <!-- Bootstrap core JavaScript
