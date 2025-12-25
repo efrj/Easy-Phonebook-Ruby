@@ -1,22 +1,64 @@
 <h1 class="page-header">Contacts <small>with the letter <strong><%=@letter.upcase%></strong></small></h1>
 
-<% @files.each do |f| %>
-  <p><strong><%=contact_name f%></strong> - <a href="#" data-action="edit" data-letter="<%=file_letter f%>" data-file="<%=file_name f%>" class="contact_action btn btn-success btn-sm"><i class="fa fa-eye"></i> View / <i class="fa fa-edit"></i> Edit</a> | <a href="/contact/delete/<%=file_letter f%>/<%=file_name f%>" data-action="delete" data-file="<%=file_name f%>" data-letter="<%=file_letter f%>" class="contact_action btn btn-danger btn-sm"><i class="fa fa-times-circle"></i> Delete</a></p>
-  <hr>
+<% if @files.empty? %>
+  <div class="alert alert-info">
+    <i class="fa fa-info-circle"></i> No contacts found for letter <strong><%=@letter.upcase%></strong>.
+  </div>
+<% else %>
+  <% @files.each do |f| %>
+    <div class="contact-item">
+      <strong><i class="fa fa-user"></i> <%=contact_name f%></strong>
+      <div style="margin-top: 10px;">
+        <a href="#" data-action="edit" data-letter="<%=file_letter f%>" data-file="<%=file_name f%>" class="contact_action btn btn-success btn-sm">
+          <i class="fa fa-eye"></i> View / <i class="fa fa-edit"></i> Edit
+        </a>
+        <a href="/contact/delete/<%=file_letter f%>/<%=file_name f%>" data-action="delete" data-file="<%=file_name f%>" data-letter="<%=file_letter f%>" class="contact_action btn btn-danger btn-sm">
+          <i class="fa fa-times-circle"></i> Delete
+        </a>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
-<div class="modal" id="modalContact" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- Custom backdrop (controlled by us, not Bootstrap) -->
+<div id="customBackdrop" class="custom-modal-backdrop"></div>
+
+<!-- Modal without Bootstrap backdrop -->
+<script>
+  $(document).ready(function() {
+    // Move modal to body immediately
+    $('#modalContact').appendTo('body');
+    
+    // Handle custom backdrop show/hide
+    $('#modalContact').on('show.bs.modal', function() {
+      $('#customBackdrop').fadeIn(150).css('display', 'block');
+    });
+    
+    $('#modalContact').on('hide.bs.modal', function() {
+      $('#customBackdrop').fadeOut(150);
+    });
+    
+    // Click backdrop to close modal
+    $('#customBackdrop').click(function() {
+      $('#modalContact').modal('hide');
+    });
+  });
+</script>
+
+<div class="modal fade mt-5" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Contact</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-user-circle"></i> Contact</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        
+        <!-- Content loaded via AJAX -->
       </div>
       <div class="modal-footer">
-
+        <!-- Footer content if needed -->
       </div>
     </div>
   </div>
