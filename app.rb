@@ -37,9 +37,9 @@ end
 
 get '/contact/show/:letter/:file' do
   @letter_contact = params[:letter]
-  xml_file = params[:file]
+  @xml_file = params[:file]
   contact = Contact.new
-  @file = contact.find @letter_contact, xml_file
+  @file = contact.find @letter_contact, @xml_file
   erb :show, :layout => false do
     erb :show
   end
